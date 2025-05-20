@@ -1077,7 +1077,6 @@ class CryptoTrader:
                         bids_shares = float(bids_shares.replace(',', ''))
                     
                     # self.logger.info(f"asks_shares:{asks_shares}, bids_shares:{bids_shares}")
-                    self.monitor_price_56(asks_float)
                     return asks_float, bids_float, asks_shares, bids_shares
                 
                 except ValueError as e:
