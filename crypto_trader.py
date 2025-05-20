@@ -94,13 +94,16 @@ class CryptoTrader:
         self.start_login_monitoring_running = False
         self.url_monitoring_running = False
         self.refresh_page_running = False
+
         # 添加重试次数和间隔
         self.retry_count = 3
         self.retry_interval = 5
+
         # 添加交易次数计数器
         self.trade_count = 0
         self.sell_count = 0 
         self.reset_trade_count = 0 
+        
         # 添加定时器
         self.refresh_page_timer = None  # 用于存储定时器ID
         self.url_check_timer = None
@@ -125,14 +128,14 @@ class CryptoTrader:
         self.default_sell_price = 99 # 不修改
 
         # 买入价格冗余
-        self.price_premium = 2
+        self.price_premium = 2 # 不修改
 
         # 买卖触发条件之一:最少成交数量SHARES
-        self.asks_shares = 99
-        self.bids_shares = 99
+        self.asks_shares = 99 # 不修改
+        self.bids_shares = 99 # 不修改
         
         # 按钮区域按键 WIDTH
-        self.button_width = 8
+        self.button_width = 8 # 不修改
         # 停止事件
         self.stop_event = threading.Event()
         # 初始化金额为 0
@@ -1074,6 +1077,7 @@ class CryptoTrader:
                         bids_shares = float(bids_shares.replace(',', ''))
                     
                     # self.logger.info(f"asks_shares:{asks_shares}, bids_shares:{bids_shares}")
+                    self.monitor_price_56(asks_float)
                     return asks_float, bids_float, asks_shares, bids_shares
                 
                 except ValueError as e:
